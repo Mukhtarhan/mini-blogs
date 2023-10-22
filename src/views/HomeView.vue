@@ -1,28 +1,27 @@
 <template>
   <div class="home">
     <h1>home</h1>
-    <p>My name is {{ name }} and my age is {{ age }}</p>
-    <button @click="handleClick">click me</button>
+    <input type="text" v-model="search">
+    <div v-for="name in filter" :key="name">{{ name }}</div>
+    
   </div>
 </template>
 
 <script>
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 
 export default {
   name: 'HomeView',
   setup() {
-    const p = ref(null)
-    console.log(p);
-    const name = ref('mario')
-    const age = ref(30)
+    const search = ref('')
+    const names = ref(['mario', 'yoshi', 'shin', 'aruzhan', 'shaun', 'lisa'])
+  
+    const filter = computed(() => {
+      return names.value.filter((name) => name.includes(search.value))
+    })
 
-    const handleClick = () => {
-      name.value = 'Aruzhan'
-      age.value = 19
-    }
     return {
-      name, age, p, handleClick
+      names, search, filter
     }
   }
 }
