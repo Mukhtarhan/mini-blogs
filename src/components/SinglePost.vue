@@ -1,13 +1,15 @@
 <template>
   <div class="post">
-    <router-link :to="{ name: 'Details', params: { id: post.id }}">
+    <router-link class="links" :to="{ name: 'Details', params: { id: post.id }}">
       <h3>{{ post.title }}</h3>
     </router-link>
     
     <p>{{ snippet }}</p>
+    <div class="spans">
     <span v-for="tag in post.tags" :key="tag">
       #{{ tag }}
     </span>
+  </div>
   </div>
 </template>
 
@@ -28,6 +30,26 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped>
+.post{
+  margin: auto;
+  position: relative;
+}
+.post a{
+  text-decoration: none;
+}
+.post p{
+  padding: 0 40px;
+  text-align: start;
+}
+.post .spans{
+  position: absolute;
+  left: 40px;
+}
+.post h3{
+  margin-top: 80px;
+  width: max-content;
+  color: white;
+  background-color: orange;
+}
 </style>

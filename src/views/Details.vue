@@ -1,6 +1,6 @@
 <template>
   <div v-if="error">{{ error }}</div>
-  <div v-if="post" class="post">
+  <div v-if="post" class="poste">
     <h3>{{ post.title }}</h3>
     <p class="pre">{{ post.body }}</p>
   </div>
@@ -20,16 +20,21 @@ export default {
 }
 </script>
 
-<style>
-.post{
+<style scoped>
+.poste{
     max-width: 1200px;
     margin: 0 auto;
     
 }
-.post p{
-    color: #444;
+.poste h3{
+    width: max-content;
+    padding: 5px 8px;
+    background: orange;
+    color: white;
+}
+.poste p{
     line-height: 1.5em;
-    margin-top: 40px;
+    
 }
 .pre{
     white-space: pre-wrap;

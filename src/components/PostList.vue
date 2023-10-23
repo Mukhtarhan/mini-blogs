@@ -16,5 +16,10 @@ export default {
 </script>
 
 <style>
+.post-list{
+  position: relative;
+  width: 1200px;
+  margin: auto;
 
+}
 </style>
