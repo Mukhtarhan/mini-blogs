@@ -1,27 +1,41 @@
 <template>
   <div class="home">
     <h1>home</h1>
-    <input type="text" v-model="search">
-    <div v-for="name in filter" :key="name">{{ name }}</div>
+    <div v-if="error">{{ error }}</div>
+    <div v-if="posts.length">
+      <PostList :posts="posts"/>
+    </div>
+    <div v-else>Loading...</div>
     
   </div>
 </template>
 
 <script>
 import { computed, ref } from 'vue'
-
+import PostList from '@/components/PostList.vue'
 export default {
+  components: { PostList },
   name: 'HomeView',
   setup() {
-    const search = ref('')
-    const names = ref(['mario', 'yoshi', 'shin', 'aruzhan', 'shaun', 'lisa'])
-  
-    const filter = computed(() => {
-      return names.value.filter((name) => name.includes(search.value))
-    })
+    const posts = ref([])
+    const error = ref(null)
+    
+    const load = async () => {
+      try {
+        let data = await fetch('http://localhost:3000/posts')
+        if(!data.ok) {
+          throw Error('no data avaiable')
+        }
 
+        posts.value = await data.json()
+      }
+      catch(err){
+        error.value = err.message
+      }
+    }
+    load()
     return {
-      names, search, filter
+      posts, error
     }
   }
 }
