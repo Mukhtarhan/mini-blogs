@@ -12,10 +12,9 @@ import { ref } from 'vue'
 
 
 export default {
-    
     setup() {
         const tags = ['news', 'webdev', 'coding', 'css', 'vue']
-
+        
         const isActive = {}
         tags.forEach((tag) => {
             isActive[tag] = ref(false) 
@@ -26,10 +25,11 @@ export default {
                 isActive[tag].value = false; 
             }
             isActive[tag].value = true;
+            
         }
 
 
-        
+
         return { tags, isActive, filterTag }
     }
 }

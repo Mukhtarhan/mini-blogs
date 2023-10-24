@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="home" @sortByTag="filterTag">
     <div class="posts">
       <div v-if="error">{{ error }}</div>
       <div v-if="posts.length">
@@ -9,7 +9,7 @@
     </div>
     <div class="tags">
       <Tags />
-    </div>
+    </div>  
   </div>
 </template>
 
@@ -24,10 +24,13 @@ export default {
     const { posts, error, load } = getPosts()
     load()
 
+    const filterTag = () =>{
+      console.log("sdfg");
+    }
     
 
     return {
-      posts, error
+      posts, error, filterTag
     }
   }
 }
