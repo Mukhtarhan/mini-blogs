@@ -8,7 +8,7 @@
       <div v-else>Loading...</div>
     </div>
     <div class="tags">
-      
+      <Tags />
     </div>
   </div>
 </template>
@@ -16,12 +16,15 @@
 <script>
 import getPosts from '@/composable/getPosts'
 import PostList from '@/components/PostList.vue'
+import Tags from '@/components/Tags.vue'
 export default {
-  components: { PostList },
+  components: { PostList, Tags },
   name: 'HomeView',
   setup() {
     const { posts, error, load } = getPosts()
     load()
+
+    
 
     return {
       posts, error
@@ -29,4 +32,13 @@ export default {
   }
 }
 </script>
-<style></style>
+<style >
+.home{
+  display: flex;
+  justify-content: center;
+}
+.tags{
+  margin: 100px 200px 0 0;
+  width: 150px;
+}
+</style>

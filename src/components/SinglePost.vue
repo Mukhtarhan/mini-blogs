@@ -1,5 +1,5 @@
 <template>
-  <div class="post">
+  <div class="post" >
     <router-link class="links" :to="{ name: 'Details', params: { id: post.id }}">
       <h3>{{ post.title }}</h3>
     </router-link>
@@ -22,6 +22,8 @@ export default {
         const snippet = computed(() => {
             return props.post.body.substring(0, 100) + '...'
         })
+
+        
 
         return{
             snippet
@@ -47,6 +49,7 @@ export default {
   left: 40px;
 }
 .post h3{
+  padding: 0 15px;
   margin-top: 80px;
   width: max-content;
   color: white;

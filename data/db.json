@@ -19,6 +19,15 @@
                 "coding",
                 "news"
             ]
+        },{
+            "id": 3,
+            "title": "title post3",
+            "body": "BERLIN — Author Salman Rushdie called Sunday for the unconditional defence of freedom of expression as he received a prestigious German prize that recognizes his literary work and his resolve in the face of constant danger.",
+            "tags": [
+                "webdev",
+                "vue",
+                "news"
+            ]
         }
     ]
 }
